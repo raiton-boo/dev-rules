@@ -12,11 +12,12 @@
 
 ## ブランチの命名規則
 
-ブランチ名は `接頭辞/短い英単語（ケバブケース）` のフォーマットとする。
+ブランチ名は `接頭辞/#Issue番号-短い英単語（ケバブケース）` のフォーマットとする。
 内容はひと目で分かる、なるべく短い単語を選択すること。
+Issueが存在しない軽微な作業の場合は、Issue番号を省略してもよい（例: `docs/update-readme`）。
 
-- 良い例：`feat/login-page`, `docs/update-readme`
-- 悪い例：`feat/add-new-login-page-for-user`（長すぎる）
+- 良い例：`feat/#12-login-page`, `fix/#45-header-bug`
+- 悪い例：`feat/add-new-login-page-for-user`（長すぎる、Issue番号がない）
 
 ---
 
@@ -24,13 +25,13 @@
 
 コミットメッセージの規約と統一し、以下のプレフィックスを使用する。
 
-| 接頭辞          | 用途                                             | 具体例                  |
-| :-------------- | :----------------------------------------------- | :---------------------- |
-| **`feat/`**     | 新機能の追加                                     | `feat/add-user-auth`    |
-| **`fix/`**      | バグの修正                                       | `fix/login-error`       |
-| **`hotfix/`**   | 本番環境（`main`）の緊急バグ修正                 | `hotfix/payment-crash`  |
-| **`refactor/`** | リファクタリング（機能追加やバグ修正を含まない） | `refactor/user-service` |
-| **`chore/`**    | パッケージ追加、ビルドプロセスの変更など雑務     | `chore/update-deps`     |
-| **`docs/`**     | ドキュメント（README等）の追加・修正             | `docs/update-readme`    |
-| **`test/`**     | テストコードの追加・修正                         | `test/auth-logic`       |
-| **`ci/`**       | CI/CD（GitHub Actions等）の設定変更              | `ci/deploy-workflow`    |
+| 接頭辞          | 用途                                             | 具体例                      |
+| :-------------- | :----------------------------------------------- | :-------------------------- |
+| **`feat/`**     | 新機能の追加                                     | `feat/#12-add-user-auth`    |
+| **`fix/`**      | バグの修正                                       | `fix/#45-login-error`       |
+| **`hotfix/`**   | 本番環境（`main`）の緊急バグ修正                 | `hotfix/#99-payment-crash`  |
+| **`refactor/`** | リファクタリング（機能追加やバグ修正を含まない） | `refactor/#23-user-service` |
+| **`chore/`**    | パッケージ追加、ビルドプロセスの変更など雑務     | `chore/#8-update-deps`      |
+| **`docs/`**     | ドキュメント（README等）の追加・修正             | `docs/#3-update-readme`     |
+| **`test/`**     | テストコードの追加・修正                         | `test/#15-auth-logic`       |
+| **`ci/`**       | CI/CD（GitHub Actions等）の設定変更              | `ci/#4-deploy-workflow`     |
