@@ -5,7 +5,7 @@
 
 ## 1. フォーマットと静的解析 (Linter / Formatter)
 
-- **ツールの強制**: プロジェクトごとに指定された Linter (例: ESLint) と Formatter (例: Prettier) を必ず使用する。
+- **ツールの強制**: プロジェクトごとに指定された Linter (例: ESLint) と Formatter (例: Prettier) を必ず使用する。言語ごとのツールは「8. 言語別の差分」を参照する。
 - **警告のゼロ化**: Linter のエラーや警告は原則すべて解消してからコミットする。やむを得ずルールを無効化（disable）する場合は、必ずコメントで理由を明記する。
 
 ---
@@ -37,6 +37,11 @@
 - **コード内のコメントは「なぜ (Why)」を重視する**
   - 読めば自明な処理（What）をコード行ごとに逐一コメントすることは避ける。
   - 代わりに、「なぜそのアプローチをとったのか」「なぜその制約・数値を設定したのか（Why）」といった背景を記述する。
+- **コメント・Docstring は日本語で書く**
+  - 識別子（変数名・関数名など）は従来どおり英語とし、コメントと Docstring のみ日本語とする。
+- **コメントアウトしたコードを残さない**
+  - 使わなくなったコードは、コメントアウトせず削除する。過去の内容が必要な場合は Git の履歴から復元する。
+  - 【例外】一時的に残す必要がある場合は、`// TODO:` を付けて「残す理由」と「削除する条件」を明記する。
 - **TODO / FIXME**
   - 後で対応が必要な箇所、または一時的なハックコードには `// TODO:` や `// FIXME:` を付け、何をすべきか明記する。
 
@@ -66,3 +71,23 @@
   - APIキー、パスワード、認証トークンなどの機密情報をソースコード内に直接記述（ハードコード）してはならない。
 - **環境変数の利用**
   - 機密情報や、環境（開発・本番）ごとに変わる設定値は、必ず環境変数（`.env` 等）を経由して読み込むこと。
+
+---
+
+## 8. 言語別の差分
+
+共通の原則（1〜7）は全言語に適用する。言語によって異なる点のみ、以下で定める。
+
+| 項目             | Python             | PHP                | Go                                        | TypeScript (JS)       |
+| :--------------- | :----------------- | :----------------- | :---------------------------------------- | :-------------------- |
+| 変数・関数       | `snake_case`       | `camelCase`        | 非公開は `camelCase`、公開は `PascalCase` | `camelCase`           |
+| クラス・型       | `PascalCase`       | `PascalCase`       | `PascalCase`                              | `PascalCase`          |
+| 定数             | `UPPER_SNAKE_CASE` | `UPPER_SNAKE_CASE` | `PascalCase` / `camelCase`                | `UPPER_SNAKE_CASE`    |
+| Docstring の書式 | Google スタイル    | PHPDoc             | godoc                                     | TSDoc                 |
+| Formatter        | Black              | Pint               | gofmt                                     | Biome または Prettier |
+| Linter           | Ruff               | PHPStan            | golangci-lint                             | Biome または ESLint   |
+| 準拠する標準     | PEP 8              | PSR-12             | Effective Go                              | －                    |
+
+- Python は Ruff を Linter 専用で使う（整形は Black に任せる）。
+- 「6. 型の安全性」は TypeScript が対象。JavaScript は JSDoc で型を補う。
+- Go では `any` / `interface{}` を「6」の `any` 禁止の対象とし、`_ = err` によるエラーの無視を「5」の握りつぶしとみなす。
