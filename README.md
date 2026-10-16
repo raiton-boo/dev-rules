@@ -21,5 +21,6 @@
    - AIアシスタントを使う場合は [AI-GUIDELINES.md](./AI-GUIDELINES.md) に従う
 4. **コミットする** → [COMMIT-MESSAGE.md](./COMMIT-MESSAGE.md)
 5. **PR を作成してレビュー・マージする** → [PR.md](./PR.md)
-   - PR本文に `Closes #Issue番号` を記載し、マージ時にIssueを自動クローズする
+   - `main` にマージするPRは、本文に `Closes #Issue番号` を記載し、マージ時にIssueを自動クローズする。それ以外のPRは `Refs #Issue番号` と書く（詳細は [ISSUE.md](./ISSUE.md#4-クローズ完了の自動化) 参照）
+   - 大きな変更は、小さなPRに分けて出せる（[PR.md](./PR.md#4-大きな変更を分けて出す方法適材適所) 参照）
 6. **作業ブランチを削除する** → [BRANCHING.md](./BRANCHING.md)
