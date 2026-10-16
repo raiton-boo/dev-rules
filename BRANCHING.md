@@ -62,13 +62,22 @@
 
 コミットメッセージの規約と統一し、以下のプレフィックスを使用する。
 
-| 接頭辞          | 用途                                             | 具体例                  |
-| :-------------- | :----------------------------------------------- | :---------------------- |
-| **`feat/`**     | 新機能の追加                                     | `feat/add-user-auth`    |
-| **`fix/`**      | バグの修正                                       | `fix/login-error`       |
+| 接頭辞          | 用途                                                                           | 具体例                  |
+| :-------------- | :----------------------------------------------------------------------------- | :---------------------- |
+| **`feat/`**     | 新機能の追加                                                                   | `feat/add-user-auth`    |
+| **`fix/`**      | バグの修正                                                                     | `fix/login-error`       |
 | **`hotfix/`**   | 本番環境（`main`）の緊急バグ修正（[手順](./PR.md#7-hotfix本番の緊急バグ修正)） | `hotfix/payment-crash`  |
-| **`refactor/`** | リファクタリング（機能追加やバグ修正を含まない） | `refactor/user-service` |
-| **`chore/`**    | パッケージ追加、ビルドプロセスの変更など雑務     | `chore/update-deps`     |
-| **`docs/`**     | ドキュメント（README等）の追加・修正             | `docs/update-readme`    |
-| **`test/`**     | テストコードの追加・修正                         | `test/auth-logic`       |
-| **`ci/`**       | CI/CD（GitHub Actions等）の設定変更              | `ci/deploy-workflow`    |
+| **`refactor/`** | リファクタリング（機能追加やバグ修正を含まない）                               | `refactor/user-service` |
+| **`chore/`**    | パッケージ追加、ビルドプロセスの変更など雑務                                   | `chore/update-deps`     |
+| **`docs/`**     | ドキュメント（README等）の追加・修正                                           | `docs/update-readme`    |
+| **`test/`**     | テストコードの追加・修正                                                       | `test/auth-logic`       |
+| **`ci/`**       | CI/CD（GitHub Actions等）の設定変更                                            | `ci/deploy-workflow`    |
+
+---
+
+## Gitコマンドの使い分け
+
+役割の混同を防ぐため、`git checkout` は使わない。
+
+- ブランチの切り替え: `git switch`
+- ファイルの復元・取り消し: `git restore`
