@@ -103,8 +103,7 @@ main ← feat/login (親)
 5. すべての子をマージしたら、親ブランチから切り元へのPRを出す。
 
 - 親ブランチは、すべての子がマージされ、切り元へのPRがマージされるまで削除しない。
-- **関連Issue:** `Closes #xx` でIssueが自動クローズされるのは、`main` へマージされるときだけ。`main` 以外をベースにするPR（子のPRなど）には `Refs #xx` と書き、`main` にマージされるPRの本文に `Closes #xx` をまとめて書く（例: `Closes #1, Closes #2`）。
-  - 作業ブランチ間のマージでもIssueを自動クローズしたい場合は、`.github/workflows/` にGitHub Actionsのワークフローを用意する。
+- **関連Issue:** 子のPRには `Refs #xx` と書き、親から `main` へのPRの本文に `Closes #xx` をまとめて書く（例: `Closes #1, Closes #2`）。原則は [ISSUE.md](./ISSUE.md#4-クローズ完了の自動化) を参照。
 - 子のPRを親へマージする方式は、[3. マージ方式](#3-マージ方式について)から選ぶ。
 - 子の作業中に親ブランチが進んだ場合は、子ブランチに親の変更を取り込む（`git rebase <親ブランチ>` または `git merge <親ブランチ>`）。
 
@@ -128,4 +127,4 @@ main ← PR#1 (feat/login-logic) ← PR#2 (feat/login-ui)
 - **下の段を修正したとき:** 上の段へ反映（rebase）する。
   - `gh stack`: `gh stack sync`（または `gh stack rebase`）
   - 手動: `git rebase --onto <新しい下の段> <古い下の段> <上の段>` のあと `git push --force-with-lease`
-- **関連Issue:** `Closes #xx` は最後の段のPRだけに書く。それ以外は `Refs #xx` と書く。
+- **関連Issue:** `Closes #xx` は最後の段のPRだけに書く。それ以外は `Refs #xx` と書く。原則は [ISSUE.md](./ISSUE.md#4-クローズ完了の自動化) を参照。
