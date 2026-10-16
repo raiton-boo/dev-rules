@@ -33,7 +33,7 @@ PRの本文は、以下のテンプレート（`.github/pull_request_template.md
 
 ## 関連Issue
 
-<!-- Closes #xx -->
+<!-- mainへのPR: Closes #xx / それ以外: Refs #xx -->
 ```
 
 ---
